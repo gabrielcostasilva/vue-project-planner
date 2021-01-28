@@ -13,7 +13,7 @@ Each single project item can be expanded to show the details by clicking on the 
 
 ### Editing Project
 <img src="./pics/EditProject.png"  />
-By clicking on the pencil icon, the EditProject view is loaded with the current project data. When the button _Update Project_ is clicked, the project data is updated.
+By clicking on the pencil icon, the EditProject view is loaded with the current project data. When the button __Update Project__ is clicked, the project data is updated.
 
 ### Deleting Project
 The trash icon deletes the targeted project. There is no confirmation before deleting.
@@ -24,7 +24,7 @@ A project may be set as completed or ongoing. The left-hand border colour identi
 
 ### Adding a New Project
 <img src="./pics/AddProject.png"  />
-The main menu enables adding a new project by clicking in the corresponding option. It loads the _AddProject_ view. Both fields are required although there is no other check. The _Add Project_ button stores the data in the local database.
+The main menu enables adding a new project by clicking in the corresponding option. It loads the _AddProject_ view. Both fields are required although there is no other check. The __Add Project__ button stores the data in the local database.
 
 ## Views & Components Overview
 
