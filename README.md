@@ -1,5 +1,5 @@
-# project-planner
-This project is based on one of the many projects developed by [The Net Ninja (Shaun Pelling)](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) on his excelent [Udemy course](https://www.udemy.com/course/build-web-apps-with-vuejs-firebase).
+# Project Planner
+This project is based on one of the three projects developed by [The Net Ninja (Shaun Pelling)](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) on his excelent [Udemy course](https://www.udemy.com/course/build-web-apps-with-vuejs-firebase).
 
 ## Project Overview
 
@@ -13,18 +13,18 @@ Each single project item can be expanded to show the details by clicking on the 
 
 ### Editing Project
 <img src="./pics/EditProject.png"  />
-By clicking on the pencil icon, the EditProject view is loaded with the current project data. When the button __Update Project__ is clicked, the project data is updated.
+By clicking on the pencil icon on the right-hand side of the project title, the _EditProject_ view is loaded with the current project data. When the button _Update_ _Project_ is clicked, the project data is updated.
 
 ### Deleting Project
-The trash icon deletes the targeted project. There is no confirmation before deleting.
+The trash icon deletes the targeted project. The icon is located on the right-hand side of the project title. There is no confirmation before deleting.
 
 ### Changing Project Completion Status
 <img src="./pics/CompletionStatus.png"  />
-A project may be set as completed or ongoing. The left-hand border colour identifies the project completion status. The check icon is also coloured differently to identify the completion status. In addition, the check icon can be used to change the status.
+A project may be set as completed or ongoing. The left-hand border colour identifies the project completion status. The check icon is also coloured differently to identify the completion status. In addition, the check icon changes the project completion status.
 
 ### Adding a New Project
 <img src="./pics/AddProject.png"  />
-The main menu enables adding a new project by clicking in the corresponding option. It loads the _AddProject_ view. Both fields are required although there is no other check. The __Add Project__ button stores the data in the local database.
+The main menu enables adding a new project by clicking on the corresponding option. It loads the _AddProject_ view. Both fields are required although there is no other check. The _Add_ _Project_ button stores the data in the local database.
 
 ## Views & Components Overview
 
@@ -35,13 +35,17 @@ Using Vue 3, the project consists of a root (App.vue, as always) and three child
 ## Views & Components Details
 
 ### Views
-* _Home_
-* _AddProject_
-* _EditProject_
+* _Home_ is the main agregating page (after the App.vue, of course). It groups the filter component (_FilterNav_), which is located between the main menu and the project list in the main screen. It also groups the project list. Each project item is an instance of _SingleProject_. Both _FilterNav_ and _SingleProject_ receives parameters via _props_, and emit events to/from _Home_.  
+
+* _AddProject_ has the form for project data input. Once the data is populated and the button clicked, the _view_ submits a REST/POST request to insert the new data into the local database. The route to this is view is managed by the Vue Router, according to configuration set on the _Navbar.vue_ and _router/index.js_.
+
+* _EditProject_ has the same form used in the _AddProject_ view (which could have been a separated component for increasing reuse). Different from the _AddProject_, this view needs to populate the current data into the  form before enabling any editing. This is done by retrieving data from the database via a GET request. The updated data is sent to the local database via a PATCH request. After editing, the Vue Router redirects to the main page as long as everything works fine.
 
 ### Components
 * _NavBar_
+
 * _SingleProject_
+
 * _FilterNav_
 
 ## File Structure
@@ -51,3 +55,5 @@ Using Vue 3, the project consists of a root (App.vue, as always) and three child
 ## Dependencies
 
 ## Data
+
+## Running the Project Locally
