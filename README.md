@@ -59,8 +59,51 @@ Using Vue 3, the project consists of a root (`App.vue`, as always) and three chi
 
 <img src="./pics/FileStructure.png"  />
 
+The directory tree was automatically built by the _Vue CLI_. The `data` folder has added to host the database file. In the Figure above, the files marked with a dark gray flag means that we created the file in for the project, whereas those marked with a green pencil means that we updated the existent file for the purpose of the project.
+
+We updated the `public/index.html` file to link material icons we used in the project. We updated `router/index.js` to set the appropriate route configuration for _Vue Router_. We updated the `Home` file to represent the main page of the project, including both structure and formatting. The `App` file aggregates the `Navbar` and the router view. 
+
 ## Dependencies
+
+The project has two main dependencies. First, the _View Router_ that is automatically added during the project creation using the _Vue CLI_. Second, the _json-server_ is used to simulate a local endpoint for the database. The database is just a file in the file structure as can be seen in the file structure descripption.
 
 ## Data
 
+```json
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Create new homepage banner",
+      "details": "Lorem ipsum",
+      "complete": true
+    }
+  ]
+}
+```
+
+The _json-server_ uses a single JSON file to represent the data in the database. As one can see, there are four attributes. The `id` is automatically created by the _json-server_ when inserting new data. During the project execution, the file is updated as operations (add, update, delete) are performed.
+
 ## Running the Project Locally
+
+To run the project, ensure that you have NPM installed. You also need the _json-server_ installed globally before starting.
+
+1. Clone the project locally
+
+```
+git clone https://github.com/gabrielcostasilva/project-planner.git
+```
+
+2. In the project folder, start the _json-server_
+
+```
+json-server --watch data/db.json
+```
+
+3. Open another terminal. In the project folder, start the project.
+
+```
+npm run serve
+```
+
+4. Access the app with your browser at `http://localhost:8080`
