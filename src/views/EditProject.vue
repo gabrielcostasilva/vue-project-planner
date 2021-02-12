@@ -9,39 +9,44 @@
 </template>
 
 <script>
+import { onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
+
 export default {
-    props: ['id'],
-    data() {
-        return {
-            title: '',
-            details: '',
-            uri: `http://localhost:3000/projects/${this.id}`
-        }
-    },
-    mounted() {
-        fetch(this.uri)
-            .then(res => res.json())
-            .then(data => {
-                this.title = data.title,
-                this.details = data.details
-            })
-    },
-    methods: {
-        handleUpdate() {
-            fetch(this.uri, {
-                method: "PATCH",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({
-                    title: this.title,
-                    details: this.details
-                })
-            }).then(() => this.$router.push('/'))
-            .catch(err => console.log(err))
-        }
-    },
-}
+  props: ["id"],
+  setup(props) {
+    const title = ref("");
+    const details = ref("");
+
+    const uri = `http://localhost:3000/projects/${props.id}`;
+
+    const router = useRouter();
+
+    const handleUpdate = () => {
+      fetch(uri, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: title.value,
+          details: details.value,
+        }),
+      })
+        .then(() => router.push("/"))
+        .catch((err) => console.log(err));
+    };
+
+    onMounted(() => {
+      fetch(uri)
+        .then((res) => res.json())
+        .then((data) => {
+          (title.value = data.title), (details.value = data.details);
+        });
+    });
+
+    return { title, details, handleUpdate };
+  },
+};
 </script>
 
 <style>
-
 </style>
