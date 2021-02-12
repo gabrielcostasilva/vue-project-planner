@@ -1,5 +1,7 @@
-# Project Planner
+# Project Planner - Composition API
 This project is based on one of the three projects developed by [The Net Ninja (Shaun Pelling)](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) on his excelent [Udemy course](https://www.udemy.com/course/build-web-apps-with-vuejs-firebase).
+
+Different from the project in the master branch, this project was modified to use the newly introduced composition API. All funcionalities, components, Views, and methods are the same, apart from one new method that needed to be introduced. Please, check the commits in this branch to see the differences in detail.
 
 ## Project Overview
 
