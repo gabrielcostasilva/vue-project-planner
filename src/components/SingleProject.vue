@@ -18,29 +18,34 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
   props: ["project"],
-  data() {
-    return {
-      showDetails: false,
-      uri: `http://localhost:3000/projects/${this.project.id}`,
-    };
-  },
-  methods: {
-    deleteProject() {
-      fetch(this.uri, { method: "DELETE" })
-        .then(() => this.$emit("delete", this.project.id))
+  setup(props, context) {
+
+    const showDetails = ref(false)
+    const uri = ref('')
+
+    uri.value = `http://localhost:3000/projects/${props.project.id}`
+
+    const deleteProject = () => {
+      fetch(uri.value, { method: "DELETE" })
+        .then(() => context.emit("delete", props.project.id))
         .catch((err) => console.log(err));
-    },
-    toggleComplete() {
-      fetch(this.uri, {
+    }
+
+    const toggleComplete = () => {
+      fetch(uri.value, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ complete: !this.project.complete }),
+        body: JSON.stringify({ complete: !props.project.complete }),
       })
-        .then(() => this.$emit("complete", this.project.id))
+        .then(() => context.emit("complete", props.project.id))
         .catch((err) => console.log(err));
-    },
+    }
+
+    return { showDetails, uri, deleteProject, toggleComplete}
   },
 };
 </script>
