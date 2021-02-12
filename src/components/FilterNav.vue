@@ -9,12 +9,13 @@
 <script>
 export default {
     props: ['currentFilter'],
-    methods: {
-        updateFilter(by) {
-            this.$emit('filterChange', by)
+    setup(props, context) {
+      const updateFilter = by => {
+            context.emit('filterChange', by)
         }
-    },
 
+      return { updateFilter }
+    }
 }
 </script>
 
