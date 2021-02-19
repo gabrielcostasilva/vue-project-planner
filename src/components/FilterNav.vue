@@ -9,9 +9,9 @@
 <script>
 export default {
     props: ['currentFilter'],
-    setup(props, context) {
+    setup(props, { emit }) {
       const updateFilter = by => {
-            context.emit('filterChange', by)
+          emit('filterChange', by)
         }
 
       return { updateFilter }

@@ -22,7 +22,7 @@ import { ref } from 'vue';
 
 export default {
   props: ["project"],
-  setup(props, context) {
+  setup(props, {emit}) {
 
     const showDetails = ref(false)
     const uri = ref('')
@@ -31,7 +31,7 @@ export default {
 
     const deleteProject = () => {
       fetch(uri.value, { method: "DELETE" })
-        .then(() => context.emit("delete", props.project.id))
+        .then(() => emit("delete", props.project.id))
         .catch((err) => console.log(err));
     }
 
@@ -41,7 +41,7 @@ export default {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ complete: !props.project.complete }),
       })
-        .then(() => context.emit("complete", props.project.id))
+        .then(() => emit("complete", props.project.id))
         .catch((err) => console.log(err));
     }
 
